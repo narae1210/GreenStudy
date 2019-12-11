@@ -422,7 +422,7 @@ a:hover {
 			</div>
 			<div id="article4">
 				<font size=5px; color=#ffffff; font-weight=bold; text-align=center>총
-					문제 </font>
+					문제z </font>
 			</div>
 		</div>
 	</section>
