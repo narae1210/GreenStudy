@@ -22,7 +22,7 @@
 	 <ul><li> <a class = "navFont"> 현재 모집중인 스터디 </a> </li></ul>
 	 <ul><li> <a class = "navFont"> 실력 향상 스터디 </a> </li></ul>
 	 <ul><li> <a class = "navFont"> 프로젝트 스터디 </a> </li></ul>
-  </nav>
+  </div>
  </header>
 
  <body>
