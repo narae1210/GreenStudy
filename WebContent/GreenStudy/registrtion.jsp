@@ -22,7 +22,7 @@
   <div class = "nav">
 	 <ul><li> <a class = "navFont"> 스터디 현황 </a> </li></ul>
 	 <ul><li> <a class = "navFont"> 스터디 만들기 </a> </li></ul>
-  </nav>
+  </div>
  </header>
 
  <div id=bodybox align = center> 
@@ -245,5 +245,6 @@
 	주소 : 서울시 강남구 역삼동 815-4 만이빌딩 5층, 10층 <br>
 	COPYRIGHT © 2019 GITACADEMY </div>
    </div> 
+  </footer>
  </body>
 </html>
