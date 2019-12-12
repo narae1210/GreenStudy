@@ -226,7 +226,7 @@
   }
   #blank{
   height: 50px;
-  float : right;
+  float : left;
   }
   select[name="hint"]{
   height:30px;
