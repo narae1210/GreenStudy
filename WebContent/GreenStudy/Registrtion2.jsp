@@ -18,13 +18,29 @@
 
 
 <style>
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
 body {
 	text-align: center;
 	margin: 0 auto;
+	font: normal 12px/22px Arial, Helvetica, sans-serif;
+	width: 100%;
 }
-
-
-
+#bodybox{
+  width:1000px;
+  margin: 0 auto;
+  font-size: 16px;
+}
+#box1{
+  width:800px;
+  margin: 0 auto;
+  border-radius:30px;
+  background-color:#f5f5f5;
+}
+  
 .Login li {
 	display: inline-block;
 	float: right;
@@ -94,7 +110,6 @@ header {
 article {
 width : 100%;
 height: 700px;
-
 }
 
 nav {
@@ -141,18 +156,6 @@ nav {
 	display: none;
 }
 
-* {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-body {
-	background: #fff;
-	font: normal 12px/22px Arial, Helvetica, sans-serif;
-	width: 100%;
-}
-
 img {
 	border: 0;
 }
@@ -170,49 +173,27 @@ a:hover {
 	text-align: center;
 }
 
-
- .footer{
+.footer{
   width : 100%;
-  height : 520px;
+  height : 200px;
   float : left;
-  margin-top : 20px;
-  line-height : 30px;
-  background-image:url("img/_bg.jpg");
-  background-repeat:repeat-x;
+  margin-top : 200px;
+  background-color: #414141;
   }
-  .footer[id=slogan]{
-  width : 300px;
-  height : 150px;
-  float : left;
-  margin-top : 120px;
-  margin-left: 150px;
-  background: transparent;
-  color: white;
-  font-size: 13px;
-  }
-  .footer[id=contact]{
-  width : 500px;
-  height : 150px;
-  clear : both;
-  margin-left: 150px;
-  background: transparent;
-  color: gray;
-  font-size: 11px;
-  }
-  #bodybox{
-  width:1000px;
-  margin: 0 auto;
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 16px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  }
+
+.footer li {
+	display: inline-block;
+	float: left;
+    margin-left : 150px;
+    margin-right : -50px;
+}
+.footerFont {
+	font-size: 12px;
+	text-align: center;
+	line-height: 63px;
+	font-family: 휴먼둥근헤드라인;
+	color: white;
+}
   .layout{
   float:left;
   }
@@ -246,7 +227,7 @@ a:hover {
   font-size:12px;
   }
   .studytitle{
-  width:270px
+  width:270px;
   height:20px;
   font-size:20px;
   overflow: hidden;
@@ -273,22 +254,6 @@ a:hover {
   font-size:12px;
   color: white;
   }
-  #box1{
-  width:800px;
-  padding:25px;
-  border-radius:30px;
-  margin-top:30px;
-  background-color:#f5f5f5;
-  box-align:center;
-  }
-  #box2{
-  width:max;
-  padding:25px;
-  border-radius:30px;
-  margin:30px;
-  background-color:#f5f5f5;
-  box-align:bottom;
-  }
   select[name="hint"]{
   height:30px;
   width:300px;
@@ -309,10 +274,11 @@ a:hover {
   color:white;
   font-weight:bold;
   }
-  tr,td{
+  tr,td, th{
   text-align:"center";
   color:#004d61;
-  font-family:Verdana;
+  padding: 5px;
+  text-align: left;
   }
   select {
   padding: 8px 10px;
@@ -321,14 +287,6 @@ a:hover {
   margin: 4px;
   background-color: white;
   }
-.lnb{
-  position: absolute;
-  left: 110px;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  font-size: 20px;
-  font-weight: bold;
-}
 /* The container */
 .container {
   display: block;
@@ -392,14 +350,13 @@ a:hover {
 	border-radius: 50%;
 	background: white;
 }  
-  
 </style>
 
 <title>Insert title here</title>
 </head>
 
 <body>
-	 <header>
+ <header>
  <div class = "Title"><a onclick="location.href='Main.jsp'"><font size = "6px;"  weight = "bold" text-align = "center" color = #2196f3>그린스터디</font></a></div>
 
  <ul class = "topMenu">
@@ -424,18 +381,18 @@ a:hover {
  </ul>
  </div>
  </nav>
-  <div id=bodybox align = center> 
-  <div id=box1 align="center">
-  <label class="lnb"> 스터디 만들기 </label>
-   <table class="table" cellpadding=5 cellspacing=0 align="center">
+ 
+  <div id=bodybox> 
+  <div id=box1>
+   <table>
 	<tr>
-		<td><font color="red">*</font> 스터디 제목 </td>
+		<th><font color="red">*</font> 스터디 제목 </th>
 	</tr>
 	<tr>
 		<td><input type = "text" name = "idinput" size="100" maxlength="20"></td>
 	</tr>
 	<tr>
-		<td><font color="red">*</font> 스터디 종류 </td>
+		<th><font color="red">*</font> 스터디 종류 </th>
 	</tr>
 		<td> <label class="container"> 실력 향상 스터디   <input type="radio" checked="checked" name="radio">
   <span class="checkmark"></span>
@@ -443,7 +400,7 @@ a:hover {
  <label class="container"> 프로젝트 스터디 <input type="radio" checked="checked" name="radio">
   <span class="checkmark"></span> </td>
 	<tr>
-		<td><font color="red">*</font> 스터디 언어 </td>
+		<th><font color="red">*</font> 스터디 언어 </th>
 	</tr>
 	<tr>
 		<td> &nbsp;&nbsp; 주요 언어 : <select name = "primary">
@@ -461,7 +418,7 @@ a:hover {
 		</td>
 	</tr>
 	<tr>
-		<td><font color="red">*</font> 스터디 인원 (주최자 포함 인원) <select name = "people">
+		<th><font color="red">*</font> 스터디 인원 (주최자 포함 인원) <select name = "people">
 		<option value="2">2</option>
 		<option value="3">3</option>
 		<option value="4">4</option>
@@ -493,9 +450,9 @@ a:hover {
 		<option value="30">30 이상</option>
 		</select>
 		명
-	 </td>
+	 </th>
 	<tr>
-		<td><font color="red">*</font> 스터디 기간 </td>
+		<th><font color="red">*</font> 스터디 기간 </th>
 	</tr>
 	<tr>
 		<td align = "left"> &nbsp;&nbsp; 시작 : <select name = "start">
@@ -611,45 +568,47 @@ a:hover {
 			dd
 		</td>
 	</tr>
-
-
-
+	<tr>
+		<th><font color="red">*</font> 개요 </th>
 	</tr>
 	<tr>
-		<td><font color="red">*</font> 개요 </td>
-	</tr>
-	<tr>
-		<td><form name = "summary"> <textarea rows = "5" cols="100" size = "10"></textarea></form></td>
+		<td><form name = "summary"> <textarea rows = "10" cols="100" size = "10"></textarea></form></td>
 	</tr>
 	</tr>
 	<tr>
-		<td> &nbsp;&nbsp;주요 내용 및 예상 결과물 </td>
+		<th> &nbsp;&nbsp;주요 내용 및 예상 결과물 </th>
 	</tr>
 	<tr>
-		<td><form name = "expect"> <textarea rows = "5" cols="100" size = "10"></textarea></form></td>
+		<td><form name = "expect"> <textarea rows = "10" cols="100" size = "10"></textarea></form></td>
 	</tr>
 	<tr>
-		<td> &nbsp;&nbsp;기대 효과 및 활용 분야 </td>
+		<th> &nbsp;&nbsp;기대 효과 및 활용 분야 </th>
 	</tr>
 	<tr>
-		<td><form name = "effect"> <textarea rows = "5" cols="100" size = "10"></textarea></form></td>
+		<td><form name = "effect"> <textarea rows = "10" cols="100" size = "10"></textarea></form><td>
 	</tr>
+    <tr>
+   	<td><hr width=100% color="#EAEAEA"></td>
+   	</tr>
+   	<tr>
+	<td><input type="button" name= "registin" value="Complete!" onclick="alert('스터디 개설 완료')" style = "width:100%;height:40px;background-color:#ff502f;"> </td>
+    </tr>
+   
    </table>
-
-   	<hr width=80% color="#EAEAEA">
-	<input type="button" name= "registin" value="Complete!" onclick="alert('스터디 개설 완료')" style = "width:500px;height:40px;background-color:#ff502f;"> 
-
   </div>
  </div>
 
    <footer>
-  <div class = "footer"> 
-    <div class = "footer" id=slogan align=left> 미래를 공부합니다<br> ICT 스터디플랫폼 그린스터디<br> © GreenStudy Platform Co., Ltd. </div>
-    <div class = "footer" id=contact align=left>  대표자 : 김상곤 | 사업자등록번호 214-86-26812 <br>
-	통신판매업신고 강남13717호 | 학원등록번호 : 강남 제 1101호 <br>
-	주소 : 서울시 강남구 역삼동 815-4 만이빌딩 5층, 10층 <br>
-	COPYRIGHT © 2019 GITACADEMY </div>
-   </div> 
- </footer>
+   <div class = "footer">
+    <ul> 
+     <li><a class="footerFont"> 개인정보 처리 방침</a></li>
+     <li><a class="footerFont"> 이메일무단수집거부 </a></li>
+     <li><a class="footerFont"> 이용자약관 </a></li>
+     <li><a class="footerFont"> 사이트맵 </a></li>
+     <li><spen class="footerFont"> 대표전화: 1588.9780 </spen></li>
+     <li><spen class="footerFont"> E-mail: greenstudy@greenstudy.com </spen></li>
+   	 <li><spen class="footerFont"> COPYRIGHT (c) 2019 Green Study. All Rights Reserved.</spen></li></ul>
+	</div>
+   </footer>
   </body>
 </html>
