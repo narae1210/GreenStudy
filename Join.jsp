@@ -42,7 +42,7 @@
 		var pass_val2 = my_form.bimil2.value
 		var pwFind_len = my_form.hintanswer.value.length
 		var name = my_form.name.value.length
-		var adr = my_form.adr.value.length
+		var adr_len = my_form.adr.value.length
 		var sex = my_form.gender // 아직
 		var email = my_form.email.value.length
 		var phone2 = my_form.phone2.value.length
@@ -58,55 +58,48 @@
 		} else if (pass_val1 !== pass_val2) {
 			sum += 1;
 			alert("비밀번호가 일치하지 않습니다..")
-
 		}
 
 		if (pass_len == 0) {
 			sum += 1;
 			alert("비밀번호를 입력하지 않으셨습니다.")
-
 		}
 
 		if (pass_len2 == 0) {
 			sum += 1;
 			alert("비밀번호 확인 칸을 입력하지 않으셨습니다.")
-
 		}
 
 		if (pwFind_len == 0) {
 			sum += 1;
 			alert("비밀번호 찾기 답을 입력하지 않았습니다.")
-
 		}
 
 		if (name == 0) {
 			sum += 1;
 			alert("이름을 입력하지 않았습니다.")
-
 		}
 
-		if (adr == 0) {
+		if (adr_len == 0) {
 			sum += 1;
 			alert("주소를 입력하지 않았습니다.")
-
 		}
 
 		if (email == 0) {
 			sum += 1;
 			alert("이메일을 입력하지 않았습니다.")
-
 		}
+		
 		if (phone2 == 0) {
 			sum += 1;
 			alert("핸드폰번호 앞자리를 입력하지 않았습니다.")
-
 		}
 
 		if (phone3 == 0) {
 			sum += 1;
 			alert("핸드폰번호를 뒷자리를 입력하지 않았습니다.")
-
 		}
+		
 		if (my_form.gender.value == 1) {
 			gen = "남";
 		} else {
@@ -122,11 +115,6 @@
 			my_form.submit();
 					
 		}
-
-		
-		// my_form.submit();
-
-	
 	}
 
     function sample6_execDaumPostcode() {
@@ -161,10 +149,6 @@
             }).open();
         }
     
- // function sample(url) {
-// 		window.open(url, "fun", "toolbar=yes , width=600, height=600");
-// 	}
- 
 </script>
 
 <meta charset="utf-8">
@@ -196,8 +180,8 @@
 	<hr id = "Join">
 	
 		<section>
-		<form name="my_form" action= "Join_1.jsp" method=post>	<!-- 버튼을 submit으로 수정하니 스타일 깨짐. 한꺼번에 체크하여 팝업이 여러개 뜨고 수정할 틈 없이 join_1로 넘어가는 문제 -->	
-			<center>											<!-- 이름(한글)이 넘어가면서 깨지는 문제. 테이블에 들어갈 때도 깨질텐데... -->
+		<form name="my_form" action= "Join_1.jsp" method=post>
+			<center>
 				<div id=JoinBox align="center">
 					<table cellpadding=5 cellspacing=0 align="center">
 						<tr>
@@ -258,7 +242,7 @@
 							<td colspan="3"><font color="red">*</font>Address</td>
 						</tr>
 						<tr>
-							<td><input type="text" id="sample6_postcode" placeholder="우편번호"></td>
+							<td><input type="text" id="sample6_postcode" name="adr" placeholder="우편번호"></td>
 							<td><input type="button" onclick="sample6_execDaumPostcode()" value="ZIPcode" name="adrfind" style=" width: 100px; background-color: #2196f3;"><br>
 							</td>
 						</tr>
@@ -386,7 +370,6 @@
 					<input type="button" name=signin value="Join Now!"
 						style="width: 500px; height: 40px; background-color: #2196f3;"
 						onclick="singUp()" >
-
 		</form>
 		</div>
 
