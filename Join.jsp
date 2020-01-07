@@ -15,9 +15,12 @@
 <script src="jquerssy.slides.min.js"></script>
 <script type="text/javascript" src="js/superslide.2.1.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> <!-- 다음우편번호 -->
-
+<jsp:useBean id="dao" class="Dao.Db_Dao">
+</jsp:useBean>
 <script>
+
 	function id_check() {
+		var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 		var id_len = my_form.idinput.value.length
 		var id_val = my_form.idinput.value
 
@@ -28,93 +31,15 @@
 			my_form.bimil.value = ""
 			my_form.bimil.focus()
 		}
-	}
-
-	function singUp() {
-		var sum = 0;
-		var gen = "";
-
-		var id_val = my_form.idinput.value
-
-		var pass_len = my_form.bimil.value.length
-		var pass_len2 = my_form.bimil2.value.length
-		var pass_val1 = my_form.bimil.value
-		var pass_val2 = my_form.bimil2.value
-		var pwFind_len = my_form.hintanswer.value.length
-		var name = my_form.name.value.length
-		var adr_len = my_form.adr.value.length
-		var sex = my_form.gender // 아직
-		var email = my_form.email.value.length
-		var phone2 = my_form.phone2.value.length
-		var phone3 = my_form.phone3.value.length
-
-		if ((pass_len >= 4) && (pass_len <= 8) && (pass_val1 == pass_val2)) {
-			alert("입력해주셔서 감사합니다")
-		} else if (!(pass_len >= 4) && (pass_len <= 8)) {
-			sum += 1;
-			alert("4~8자 사이의 암호만 유효합니다.")
-			my_form.bimil.focus()
-
-		} else if (pass_val1 !== pass_val2) {
-			sum += 1;
-			alert("비밀번호가 일치하지 않습니다..")
-		}
-
-		if (pass_len == 0) {
-			sum += 1;
-			alert("비밀번호를 입력하지 않으셨습니다.")
-		}
-
-		if (pass_len2 == 0) {
-			sum += 1;
-			alert("비밀번호 확인 칸을 입력하지 않으셨습니다.")
-		}
-
-		if (pwFind_len == 0) {
-			sum += 1;
-			alert("비밀번호 찾기 답을 입력하지 않았습니다.")
-		}
-
-		if (name == 0) {
-			sum += 1;
-			alert("이름을 입력하지 않았습니다.")
-		}
-
-		if (adr_len == 0) {
-			sum += 1;
-			alert("주소를 입력하지 않았습니다.")
-		}
-
-		if (email == 0) {
-			sum += 1;
-			alert("이메일을 입력하지 않았습니다.")
-		}
 		
-		if (phone2 == 0) {
-			sum += 1;
-			alert("핸드폰번호 앞자리를 입력하지 않았습니다.")
-		}
-
-		if (phone3 == 0) {
-			sum += 1;
-			alert("핸드폰번호를 뒷자리를 입력하지 않았습니다.")
-		}
-		
-		if (my_form.gender.value == 1) {
-			gen = "남";
-		} else {
-			gen = "여";
-		}
-
-		if (sum == 0) {
-			alert("회원가입을 축하드립니다." + "\n" + "Id : " + id_val + "\n" + "비밀번호 : "
-					+ my_form.bimil.value + "\n" + "이름 : " + my_form.name.value
-					+ "\n" + "이메일 : " + my_form.email.value + "\n" + "성별 : "
-					+ gen + "\n" + "핸드폰 번호 : 010 - " + my_form.phone2.value
-					+ " - " + my_form.phone3.value);
-			my_form.submit();
-					
-		}
+		 for (var i = 0; i < id_len; i++) {
+	            ch = id_val.charAt(i)
+	            if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z')&&!(ch >= 'A' && ch <= 'Z')) {
+	                alert("아이디는 영문 대소문자, 숫자만 입력가능합니다.")
+	                my_form.idinput.focus()
+	                return false;
+	            }
+	        }
 	}
 
     function sample6_execDaumPostcode() {
@@ -180,7 +105,7 @@
 	<hr id = "Join">
 	
 		<section>
-		<form name="my_form" action= "Join_1.jsp" method=post>
+		<form name="my_form" action= "JoinDb.jsp" method=post>
 			<center>
 				<div id=JoinBox align="center">
 					<table cellpadding=5 cellspacing=0 align="center">
@@ -367,7 +292,7 @@
 								name="uselang" value="C++">C++</input></td>
 						</tr>
 					</table>
-					<input type="button" name=signin value="Join Now!"
+					<input type="submit" name=signin value="Join Now!"
 						style="width: 500px; height: 40px; background-color: #2196f3;"
 						onclick="singUp()" >
 		</form>
