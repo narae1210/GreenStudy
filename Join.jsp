@@ -12,36 +12,40 @@
 <!--Using the hamburger menu display code-->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="jquerssy.slides.min.js"></script>
 <script type="text/javascript" src="js/superslide.2.1.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> <!-- 다음우편번호 -->
+<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+
 <jsp:useBean id="dao" class="Dao.Db_Dao">
 </jsp:useBean>
-<script>
+<script type="text/javascript">
 
-	function id_check() {
-		var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
-		var id_len = my_form.idinput.value.length
-		var id_val = my_form.idinput.value
+$(document).ready(function(){
+	$("#checkid").click(function(){
+		callAjax();
+	});
+});
 
-		if ((id_len >= 4) && (id_len <= 12)) {
-			alert("입력해주셔서 감사합니다")
-		} else {
-			alert("4~12자 사이의 아이디를 입력해주세요")
-			my_form.bimil.value = ""
-			my_form.bimil.focus()
-		}
-		
-		 for (var i = 0; i < id_len; i++) {
-	            ch = id_val.charAt(i)
-	            if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z')&&!(ch >= 'A' && ch <= 'Z')) {
-	                alert("아이디는 영문 대소문자, 숫자만 입력가능합니다.")
-	                my_form.idinput.focus()
-	                return false;
-	            }
-	        }
+	function callAjax(){
+		$.ajax({
+			type: "post",
+			url: "./Jungbok.jsp", //jsp?= ... 이 방식으로 getParameter를 붙이는 것도 가능함
+			data: {
+				idinputLog : $('#idinput').val(),
+			},
+			success: whenSuccess,
+			error: whenError
+		});
 	}
-
+	function whenSuccess(resdata){
+		//alert(resdata);
+		//alert("Success");
+		$("#ajaxReturn").html(resdata);
+	}
+	function whenError(){
+		alert("Error");
+	}
+	
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -73,6 +77,29 @@
             	}
             }).open();
         }
+    
+    function id_check() {
+    	var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+		var id_len = my_form.idinput.value.length
+		var id_val = my_form.idinput.value
+		if ((id_len >= 4) && (id_len <= 12)) {
+			alert("적절한 아이디입니다.");
+		} else {
+			alert("4~12자 사이의 아이디를 입력해주세요")
+			my_form.bimil.value = ""
+			my_form.bimil.focus()
+		}
+
+		for (var i = 0; i < id_len; i++) {
+			ch = id_val.charAt(i)
+			if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z')
+					&& !(ch >= 'A' && ch <= 'Z')) {
+				alert("아이디는 영문 대소문자, 숫자만 입력가능합니다.")
+				my_form.idinput.focus()
+				return false;
+			}
+			
+	}
     
 </script>
 
@@ -108,17 +135,21 @@
 		<form name="my_form" action= "JoinDb.jsp" method=post>
 			<center>
 				<div id=JoinBox align="center">
-					<table cellpadding=5 cellspacing=0 align="center">
+					<table cellpadding=5 cellspacing=0 >
 						<tr>
 							<td><font color="red">*</font>ID</td>
 							<td></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="text" name="idinput" size="30"
+							<td colspan="2"><input type="text" onChange="id_check()" name="idinput" id="idinput" size="30"
 								maxlength="12"></td>
-							<td><input type="button" name="checkid" value="IDcheck"
+							<td><input type="button" name="checkid" id="checkid" value="IDcheck"
 								style=" width: 100px; background-color: #2196f3;"
-								onclick="id_check()"></td>
+								></td>
+						</tr>
+						<tr>
+						<td colspan="3"> <div id="ajaxReturn"> </div>
+						</td>
 						</tr>
 
 						<tr>
@@ -292,13 +323,10 @@
 								name="uselang" value="C++">C++</input></td>
 						</tr>
 					</table>
-					<input type="submit" name=signin value="Join Now!"
-						style="width: 500px; height: 40px; background-color: #2196f3;"
-						onclick="singUp()" >
+				</div>	<input type="submit" onclick="id_check()" value="Join Now!" name="signin" style=" width: 500px; height: 40px; background-color: #2196f3;">
 		</form>
 		</div>
-
-		</center>
+	</center>
 	</section>
 
 		
